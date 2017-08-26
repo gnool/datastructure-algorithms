@@ -50,8 +50,16 @@ class SuffixTree:
             current_node = self.root
             while True:
                 first_char = text[t:t+1]
+                # First checks if current node has any outgoing edge with its first character the same as first_char.
+                # This part uses a dictionary for faster search in case current node has huge number of child nodes.
                 if first_char in current_node.children:
                     n = self.nodes_list[current_node.children[first_char]]
+                    # The maximum overlap of two strings is course 1 if the outgoing edge has string length equal 1.
+                    # This if-else speeds up things a little especially if n.length is consistently 1, since we avoid
+                    #    - the extra overhead involved in setting up zip() and the for loop
+                    #    - the redundant construction of text1 and text2
+                    #    - the redundant text1==text2 (we already know they match from the dict search)
+                    #    - the redundant min_index calculation
                     if n.length == 1:
                         overlap = 1
                     else:
@@ -63,16 +71,19 @@ class SuffixTree:
                                 c_i -= 1
                                 break
                         overlap = c_i+1
+                # If we cannot travel down any existing edges, we create a new node and a new edge.
                 else:
                     self.nodes += 1
                     new_node = Node(self.nodes,t+index,len(self.text)-t-index)
                     self.nodes_list.append(new_node)
                     current_node.add_child(first_char,self.nodes)
                     break
+                # Case is simple if the entire edge matches part of the incoming string, simply go to next node.
                 if n.length == overlap:
                     current_node = n
                     t += overlap
                     continue
+                # Otherwise the current edge has to be broken down and new nodes have to be added.
                 else:
                     self.nodes += 2
                     new_node1 = Node(self.nodes-1,n.index,overlap)
@@ -86,7 +97,7 @@ class SuffixTree:
                     self.nodes_list.append(new_node2)
                     break
             text = text[1:]
-            index += 1
+            index += 1         # Keep tracks of where we are in the original self.text
 
     def get_edges(self):
         """Returns a list of all edges in suffix tree."""
