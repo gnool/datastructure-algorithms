@@ -13,6 +13,7 @@ class Node:
                          key = SuffixTree.text[c.index:c.index+1]
                          value = c.node_id
     """
+    
     def __init__(self,node_id,index,length):
         self.node_id = node_id
         self.index = index
@@ -33,6 +34,7 @@ class SuffixTree:
         root          Root node of suffix tree
         nodes_list    List containing Node object instances
     """
+    
     def __init__(self,text):
         self.text = text
         self.nodes = 0
