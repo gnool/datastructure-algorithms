@@ -16,3 +16,9 @@ The main idea of this algorithm is not to update the key values of each individu
 Imagine the scenario where a subtree just moved that does not have all its nodes corrected (only the root node was corrected). If the subsequent operation involves moving 50% of this subtree to a new location, the uncorrected child nodes would now have another layer of correction. The question is: since the old correction is still retained at the parent node, would this old correction be lost? Fortunately, in order to split at any node of this uncorrected subtree, we would first need to traverse to that particular node. This process of traversing would guarantee that any pending correction would "trickle down" from the parent node to as far as the current node at which splitting shall occur. Therefore it is guaranteed that any correction would never be lost.
 
 Finally, to reconstruct the manipulated string, simply perform an in-order traversal of the tree.
+
+# When to use this algorithm
+This algorithm is suitable when long strings need to be manipulated for many times. A speed test against a brute force approach (using Python built-in string slicing and list.append() approach) is done using the following settings:
+- string length n = 300,000 
+- number of (i,j,k) operations = 100,000, where 0 <= i <= j <= n-1
+The current algorithm and the brute force approach took 25s and 200s respectively. Such difference is not surprising considering the different running time: O(log n) vs. O(n)
