@@ -1,5 +1,5 @@
 # Overview
-This algorithm returns the last digit of the sum of all Fibonacci numbers from F0 up to Fn (or more generally from Fm to Fn)
+This algorithm returns the last digit of the sum of all Fibonacci numbers from F0 up to Fn (or more generally from Fm to Fn).  
 It supports efficient calculation by utilizing [Pisano period](https://en.wikipedia.org/wiki/Pisano_period).
 Using the modular arithmetic property **(A+B) mod m = (A mod m + B mod m) mod m**, one can show that
 **(A + B + C + ... ) mod m = (A mod m + B mod m + C mod m + ...) mod m**.  
