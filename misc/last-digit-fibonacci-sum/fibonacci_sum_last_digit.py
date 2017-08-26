@@ -35,4 +35,4 @@ def fibonacci_sum_last_digit(n):
 
 if __name__ == '__main__':
     n = int(input())
-    print(fibonacci_sum_naive(n))
+    print(fibonacci_sum_last_digit(n))
