@@ -20,5 +20,5 @@ Finally, to reconstruct the manipulated string, simply perform an in-order trave
 # When to use this algorithm
 This algorithm is suitable when long strings need to be manipulated for many times. A speed test against a brute force approach (using Python built-in string slicing and list.append() approach) is done using the following settings:
 - string length n = 300,000 
-- number of (i,j,k) operations = 100,000, where 0 <= i <= j <= n-1
+- number of (i,j,k) operations = 100,000, where 0 <= i <= j <= n-1  
 The current algorithm and the brute force approach took 25s and 200s respectively. Such difference is not surprising considering the different running time: O(log n) vs. O(n)
