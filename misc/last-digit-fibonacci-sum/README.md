@@ -9,4 +9,4 @@ We also know that (Fn mod m) is periodic. Therefore instead of summing this up t
 
 # Note of usage
 The running time of this algorithm is O(1) (as compared to O(n) if we sum up the entire Fibonacci sequence up to n).  
-Calculation of Pisano period for m = 10 is very fast (Pisano period of 10 is 60). If this algorithm is heavily called, one can even store the 60 integers (the Pisano period) in a list instead of calculating it everytime.
+Calculation of Pisano period for m = 10 is very fast (Pisano period of 10 is 60). If this algorithm is heavily called, one can even store the 60 integers (the Pisano period) in a list as well as the sum of this list instead of calculating them everytime.
