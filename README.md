@@ -1,5 +1,5 @@
 # Overview
-This repository contains all my codes on data structure & algorithms related problems. Most of the problems are from the Coursera's specialization "Data Structure and Algorithms".
+This repository contains all my codes on data structure & algorithms related problems. Most of the problems are from the Coursera's specialization "Data Structure and Algorithms" set of advanced problems.
 
 Coming from a background in C, I intend to use mainly Python 3 in solving these problems for several reasons:
 - I really need to brush up my Python skills (especially on how to write efficient Pythonistic code)
