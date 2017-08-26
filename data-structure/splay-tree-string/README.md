@@ -22,4 +22,8 @@ This algorithm is suitable when long strings need to be manipulated for many tim
 - string length n = 300,000 
 - number of (i,j,k) operations = 100,000, where 0 <= i <= j <= n-1
 
-The current algorithm and the brute force approach took 25s and 200s respectively. Such difference is not surprising considering the different running time: O(log n) vs. O(n)
+The current algorithm and the brute force approach took 25s and 200s respectively. Such difference is not surprising considering the different running time: O(log n) vs. O(n) for each operation (i,j,k)  
+*Note: For the current algorithm, O(log n) is only possible after the O(n) construction of splay tree for the first time*
+
+# About the rope data structure
+Another well-known way of manipulating long strings efficiently is to use the [rope data structure](https://en.wikipedia.org/wiki/Rope_(data_structure)). I am not sure how much faster the rope data structure would perform in our problem here.
