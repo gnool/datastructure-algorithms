@@ -1,6 +1,6 @@
 # Overview
 This algorithm returns the last digit of the sum of the first n Fibonacci numbers.
-It supports efficient calculation by utilizing [Pisano period](https://en.wikipedia.org/wiki/Pisano_period) (finding Pisano period of mod 10 is extremely fast). 
+It supports efficient calculation by utilizing [Pisano period](https://en.wikipedia.org/wiki/Pisano_period).
 Using the modular arithmetic property **(A+B) mod m = (A mod m + B mod m) mod m**, one can show that
 **(A + B + C + ... ) mod m = (A mod m + B mod m + C mod m + ...) mod m**.  
 
