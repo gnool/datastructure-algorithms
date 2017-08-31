@@ -13,7 +13,7 @@ class Cyclic:
         self.string11 = s1*2
         self.string2 = s2
 
-    def build_prefix(self):
+    def _build_prefix(self):
         """Build the prefix function for pattern."""
         pattern = self.string2
         m = len(pattern)
@@ -32,7 +32,7 @@ class Cyclic:
         """Return True if string1 is cyclic rotation of string2."""
         if len(self.string1) != len(self.string2):
             return False
-        self.build_prefix()
+        self._build_prefix()
         pattern = self.string2
         text = self.string11
         m = len(self.string2)
