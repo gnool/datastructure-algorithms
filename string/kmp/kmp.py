@@ -11,7 +11,7 @@ class KMP:
     def __init__(self,pattern,text):
         self.pattern = pattern
         self.text = text
-        self.prefix = []
+        self._prefix = []
 
     def build_prefix(self):
         """Build the prefix function for pattern."""
@@ -26,7 +26,7 @@ class KMP:
             if pattern[k] == pattern[i]:
                 k = k+1
             p[i] = k
-        self.prefix = p
+        self._prefix = p
         
     def match(self):
         """Return all the pattern matches in text."""
@@ -35,7 +35,7 @@ class KMP:
         text = self.text
         m = len(self.pattern)
         n = len(self.text)
-        p = self.prefix
+        p = self._prefix
         k = 0
         for i in range(n):
             while k > 0 and text[i] != pattern[k]:
