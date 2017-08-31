@@ -29,7 +29,9 @@ class Cyclic:
         self._prefix = p
         
     def match(self):
-        """Return all the pattern matches in text."""
+        """Return True if string1 is cyclic rotation of string2."""
+        if len(self.string1) != len(self.string2):
+            return False
         self.build_prefix()
         pattern = self.string2
         text = self.string11
