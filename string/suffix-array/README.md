@@ -1,5 +1,5 @@
 # Overview
-The **suffix_array_matching.py** module can be used to
+The **suffix_array.py** module can be used to
 - Build suffix array of a string using <code>SuffixArray.build()</code>
 - Find occurences of patterns in string using <code>SuffixArray.match(patterns)</code>
 
