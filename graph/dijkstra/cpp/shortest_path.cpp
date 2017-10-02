@@ -4,6 +4,10 @@
 
 using namespace std;
 
+// Default constructor.
+ShortestPath::ShortestPath() {
+}
+
 // Constructor that initializes the member variables.
 ShortestPath::ShortestPath(Graph graph, unsigned int source) {
   this->graph = graph;
@@ -53,7 +57,7 @@ void ShortestPath::findDistanceToAll() {
 }
 
 // Calculate average path length from source to other vertices.
-double ShortestPath::averagePathLength() {
+double ShortestPath::averagePathLength() const {
   unsigned int count = 0;  // keep track of number of reachable vertices
   double total_distance = 0;  // sum of distances to reachable vertices
   for (unsigned int v = 1; v < size_; v++) {
@@ -81,28 +85,32 @@ double ShortestPath::distance(unsigned int target) {
 }
 
 // Print a sequence of vertices representing path from source to target.
-void ShortestPath::printPath(unsigned int target) {
+void ShortestPath::printPath(std::ostream& os, unsigned int target) const {
   if (target > size_-1) {
     cerr << "Error: Target not in graph." << endl;
     return;
   }
   vector<unsigned int> vertices;  // hold the list of vertices from source to target
-  vertices.push_back(target);
-  while (previous[target] != -1) {
-    vertices.push_back(previous[target]);
-    target = previous[target];
+  unsigned int current = target;
+  vertices.push_back(current);
+  while (previous[current] != -1) {
+    vertices.push_back(previous[current]);
+    current = previous[current];
   }
+  os.precision(2);
+  os.setf(ios::fixed, ios::floatfield);
   // There might be no path to source.
   if (vertices[vertices.size()-1] != source_) {
-    cout << "There is no path from source to target." << endl;
+    os << "There is no path from source to target." << endl;
   }
   // Else, print out the path.
   else {
-    cout << "Printing path from source to target... (Format: Vertice(Distance from source))" << endl;
+    os << source_ << "->" << target << "(Total distance: " << distance_[target] << ") [";
     for (int i = vertices.size()-1; i >= 0; i--) {
-      cout << vertices[i] << "(" << distance_[vertices[i]] << ") ";
+      os << vertices[i];
+      if (i != 0) os << "->";
     }
-    cout << endl;
+    os << "]" << endl;
   }
 }
 
@@ -112,11 +120,26 @@ void ShortestPath::source(unsigned int new_source) {
 }
 
 // Return current source.
-unsigned int ShortestPath::source() {
+unsigned int ShortestPath::source() const {
   return source_;
 }
 
 // Return number of vertices in graph.
-unsigned int ShortestPath::size() {
+unsigned int ShortestPath::size() const {
   return size_;
+}
+
+// Print out shortest path from source to all other vertices.
+ostream& operator<<(ostream& os, const ShortestPath& path) {
+  os << "Shortest path from vertex " << path.source() << " to all other vertices..." << endl;
+  os.precision(3);
+  vector<tuple<int,double>> neighbours;
+  tuple<int,double> edge;
+  for (unsigned int i = 0; i < path.size(); i++) {
+    if (i == path.source()) continue;
+    path.printPath(os, i);
+  }
+  os << "Average path length: " << path.averagePathLength() << endl;
+  os << endl;
+  return os;
 }
