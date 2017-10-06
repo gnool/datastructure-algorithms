@@ -118,6 +118,8 @@ def read_data():
     s, t:  Edge from node index s to node index t
     c:     Edge capacity
     1 <= s,t <= n  (1-based indices)
+
+    Note: source and sink indices must be 1 and n respectively
     """
     vertex_count, edge_count = map(int, input().split())
     graph = FlowGraph(vertex_count)
