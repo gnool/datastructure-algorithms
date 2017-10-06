@@ -1,7 +1,6 @@
 # python3
 
 import queue
-import math
 
 class Edge:
     """Edge of graph
@@ -56,10 +55,10 @@ class FlowGraph:
         flow = 0
         while True:
             previous = [None]*self.size()
-            previous[0] = 0
+            previous[from_] = from_
             # Use breadth-first search
             q = queue.Queue()
-            q.put(0)
+            q.put(from_)
             while not q.empty():
                 # No need for further search if sink is reached
                 if previous[to] != None:
@@ -82,7 +81,7 @@ class FlowGraph:
             if previous[to] != None:
                 # Find the minimum capacity along this path
                 cur = to
-                min_ = math.inf
+                min_ = float('inf')
                 while previous[cur] != cur:
                     id_ = self.graph[previous[cur]][self.fast_find[(previous[cur], cur)]]
                     edge = self.edges[id_]
