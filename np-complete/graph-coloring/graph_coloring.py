@@ -3,7 +3,7 @@
 import itertools
 
 class GraphColoring:
-    """Graph coloring to 3CNF converter:
+    """Graph coloring to SAT converter:
 
     Attributes:
         edges:           list of edges
@@ -60,8 +60,8 @@ class GraphColoring:
         for pair in itertools.combinations(clause, 2):
            clauses.append([-l for l in pair])
 
-    def print_3CNF(self):
-        """Output the graph coloring problem in 3CNF form."""
+    def print_SAT(self):
+        """Output the graph coloring problem in SAT form."""
         clauses = []
         n = self.total_vertices
         # Each vertex must be assigned to exactly one color.
@@ -82,4 +82,4 @@ class GraphColoring:
 if __name__ == '__main__':
     graph = GraphColoring(3)
     graph.read_data()
-    graph.print_3CNF()
+    graph.print_SAT()
