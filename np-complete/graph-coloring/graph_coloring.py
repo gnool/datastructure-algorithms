@@ -10,12 +10,17 @@ class GraphColoring:
         total_vertices:  number of vertices
         total_edges:     number of edges
         colors:          number of colors
+
+    Further details:
+    Each state (i, j) represents whether vertice i is colored by color j
+    (1 = yes, 0 = no)
     """
     def __init__(self, colors):
         self.edges = []
         self.total_vertices = 0
         self.total_edges = 0
         self.colors = colors
+
     def read_data(self):
         """Read input:
 
@@ -33,6 +38,7 @@ class GraphColoring:
         """
         self.total_vertices, self.total_edges = map(int, input().split())
         self.edges = [list(map(int, input().split())) for i in range(self.total_edges)]
+
     def var(self, i, j):
         """Return an integer representing a variable:
 
@@ -41,6 +47,7 @@ class GraphColoring:
         j             color          [0, 1, 2, ...]
         """
         return (i-1) * self.colors + j
+
     def exactly_one(self, i, clauses):
         """Impose restriction that each vertex must be assigned to
            exactly one color.
@@ -52,6 +59,7 @@ class GraphColoring:
         # (-a OR -b) AND (-a OR -c) AND ...
         for pair in itertools.combinations(clause, 2):
            clauses.append([-l for l in pair])
+
     def print_3CNF(self):
         """Output the graph coloring problem in 3CNF form."""
         clauses = []
@@ -69,6 +77,7 @@ class GraphColoring:
         for clause in clauses:
             clause.append(0)
             print(" ".join(map(str, clause)))
+
 
 if __name__ == '__main__':
     graph = GraphColoring(3)
