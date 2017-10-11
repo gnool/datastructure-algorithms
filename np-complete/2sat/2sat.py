@@ -102,7 +102,7 @@ class SCC:
         return components
 
     def dfs(self, adj, visited, x):
-        """Depth-first-search graph."""
+        """Depth-first explore from node x (non-recursive)."""
         explored = [x]
         n = len(adj)
         stack = []
@@ -124,7 +124,7 @@ class SCC:
         return explored
 
     def post_order(self, adj):
-        """Find post-order using depth-first-search."""
+        """Find post-order using depth-first-search (non-recursive)."""
         count = 1
         n = len(adj)
         post = [None]*n
