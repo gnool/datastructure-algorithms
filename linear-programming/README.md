@@ -28,3 +28,5 @@ c =
 1 1 1 1 . . . . . . . . . . 1    (i.e. n 1's)
 ```
 It turns out that the number of pivoting operations required in this test varies exponentially with n (```~1.6^n```).
+
+_Credits to Coursera's Advanced Algorithms and Complexity course team._
